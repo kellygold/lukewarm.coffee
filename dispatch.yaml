@@ -1,0 +1,5 @@
+dispatch:
+  - url: "*lukewarm.coffee/*"
+    service: lukewarmcoffee
+  - url: "*kelly.gold/*"
+    service: default

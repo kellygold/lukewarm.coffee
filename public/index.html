@@ -1,0 +1,285 @@
+<html>
+<head>
+<style>
+/* Style for navigation bar */
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #F5F5DC; /* Same color as background */
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  font-family: 'Pacifico', cursive; /* Google font */
+  font-size: larger; /* Larger text */
+  text-decoration:none; /* No underline */
+}
+
+li:hover {
+ border-radius:10px; /* Rounded corners */
+ border:solid black; /* Black border */
+}
+
+/* Style for container */
+.container {
+ width:80%;
+ margin:auto
+}
+
+/* Style for featured items container */
+.featured-container {
+  display:flex; 
+  overflow-x:auto;
+  padding: 10px 0; /* Add padding above and below the cards */
+  margin-top:20px /* Space below navigation bar */ 
+}
+
+/* Style for featured items cards */
+.featured-card {
+  width: 300px;
+  height: 400px;
+  margin-right: 10px;
+  border: solid lightgrey; /* Soft border */
+  position: relative; /* Add position relative */
+  transition: transform 0.2s ease-in-out; /* Add transition effect */
+  z-index: 1; /* Add z-index to bring the card to the front */
+}
+
+.featured-card img {
+  width: 300px;
+  height: 300px;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  object-fit: cover;
+}
+
+.featured-card h3 {
+  text-align: center;
+}
+
+.featured-card p {
+  text-align: center;
+}
+
+/* Style for hover effects on cards */
+.featured-card:hover {
+  transform: rotate(5deg); /* Add jiggle effect */
+}
+
+/* Style for buttons on cards */
+.buttons {
+  position: absolute;
+  bottom: 0;
+  left: -1%;
+  right: -1%;
+  height: auto;
+  background-color: #DDDDDD;
+  display: flex;
+  justify-content: space-between;
+  visibility: hidden;
+  opacity: 0.5; /* Set initial opacity */
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.featured-card:hover .buttons {
+  visibility: visible;
+  opacity: 1; /* Set opacity on hover */
+}
+
+.button {
+  display: block;
+  width: 50%;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+  color: black;
+  font-weight: bold;
+  font-family: 'Pacifico', cursive;
+  font-size: 14px;
+  text-decoration:none;
+  transition: background-color 0.3s ease; /* Add transition effect */
+}
+
+.view-item {
+  background-color: #DDDDDD;
+  opacity: 1; /* Set opacity to 1 for View Item button */
+}
+
+.buy-now {
+  background-color: #FF0000;
+  opacity: 1; /* Set opacity to 1 for Buy Now button */
+}
+
+.button:hover {
+  background-color: #CCCCCC;
+  opacity: 0.8;
+}
+
+/* Style for testimonials */
+.testimonials p {
+ font-style:italic; 
+ text-align:center
+}
+
+.testimonials ul {
+ list-style-type:none; 
+ display:flex; 
+ justify-content:center
+}
+
+.testimonials li img{
+ width:20px
+}
+/* Style for body */
+body{
+ background-color:#F5F5DC
+}
+  
+/* Style for cart icon */
+#cart{
+ position:absolute; 
+ top:10px; 
+ right:10px
+}
+  
+#cart img{
+ width:40px
+}
+  
+/* Style for horizontal line */  
+hr{
+ border:none;
+ height:.5px;
+ color:black;
+ background-color:black;
+ opacity:.2 /* Soft line */   
+}
+nav {
+  /* Use flexbox to align items */
+  display: flex;
+  /* Center the items horizontally */
+  justify-content: center;
+  /* Center the items vertically */
+  align-items: center
+}
+
+</style>
+<!-- Link to Google font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- Navigation bar -->
+<nav>
+  <ul>
+    <li><a href="#">Dogs</a></li>
+    <li><a href="#">Cats</a></li>
+    <li><a href="#">Pups & Kittens</a></li>
+    <li><a href="#">More Friends</a></li>
+    <li><a href="#">Sale</a></li>
+  </ul>
+</nav>
+
+<!-- Container -->
+<div class="container">
+
+  <!-- Horizontal line -->
+  <hr>
+
+  <!-- Featured items container -->
+  <div class="featured-container">
+
+    <!-- Featured item card -->
+    <div class="featured-card">
+      <div class="buttons">
+        <a href="#" class="button view-item">View Item</a>
+        <a href="#" class="button buy-now">Buy Now: <span class="price">$29.99</span></a>
+      </div>
+      <img src="images/bone.png" alt="Dog bone" width="500" height="300">
+      <h3>Pet Bone</h3>
+      <p class="price">$29.99</p>
+    </div>
+
+    <!-- Featured item card -->
+    <div class="featured-card">
+      <div class="buttons">
+        <a href="#" class="button view-item">View Item</a>
+        <a href="#" class="button buy-now">Buy Now</a>
+      </div>
+      <img src="images/dogbowl.png" alt="Cat food in a bowl" width="500" height="300">
+      <h3>Pet bowl</h3>
+      <p>$19.99</p>
+    </div>
+
+    <!-- Featured item card -->
+    <div class="featured-card">
+      <div class="buttons">
+        <a href="#" class="button view-item">View Item</a>
+        <a href="#" class="button buy-now">Buy Now</a>
+      </div>
+      <img src="images/chewtoy.png" alt="Dog toy on white background" width="500" height="300">
+      <h3>Pet toy</h3>
+      <p>$9.99</p>
+    </div>
+
+    <!-- Featured item card -->
+    <div class="featured-card">
+      <div class="buttons">
+        <a href="#" class="button view-item">View Item</a>
+        <a href="#" class="button buy-now">Buy Now</a>
+      </div>
+      <img src="images/collar.png" alt="Cat collar with bell" width="500" height="300">
+      <h3>Pet collar</h3>
+      <p>$14.99</p>
+    </div>
+
+  </div>
+  <!-- End of featured items container -->
+
+  <!-- Horizontal line -->
+  <hr>
+
+  <!-- Testimonials -->
+  <div class="testimonials">
+    <p>"I love this website! They have everything I need for my pets and more!" - Jane Doe</p>
+    <p>"The customer service is amazing! They helped me find the perfect product for my cat." - John Smith</p>
+    <p>"The prices are unbeatable! I always shop here for my dog supplies." - Lisa Brown</p>
+    <ul>
+      <li><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg.png" alt="Facebook logo"></li>
+      <li><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/1024px-Instagram_icon.png" alt="Instagram logo"></li>
+      <li><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/132px-Instagram_logo_2016.svg.png" alt="Twitter logo"></li>
+    </ul>
+    <p>Follow us on social media for more updates and discounts!</p>
+  </div>
+  <!-- End of testimonials -->
+
+  <!-- Horizontal line -->
+  <hr>
+
+  <!-- Footer -->
+  <p>© 2023 by Pet Supplies. Proudly created with Bing.</p>
+
+</div>
+<!-- End of container -->
+
+<!-- Cart icon -->
+<div id="cart">
+  <a href="#"><img src="https://cdn.iconscout.com/icon/free/png-256/shopping-cart-452-1163339.png" alt="Cart icon"></a>
+</div>
+
+<!-- End of body -->
+</body>
+</html>
+
+
