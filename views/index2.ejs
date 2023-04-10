@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Magically Integrations Catalog</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.runalloy.com/scripts/embedded.js" type="text/javascript"></script>
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f4f6f9;
+        margin: 0;
+      }
+      
+      .header {
+        background-color: #1a6db3;
+        padding: 15px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: white;
+        font-weight: 500;
+      }
+      
+      .header .logo {
+        font-size: 20px;
+      }
+      
+      .main-content {
+        display: flex;
+        padding: 30px;
+      }
+      
+      .sidebar {
+        width: 250px;
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+      }
+      
+      .sidebar .section {
+        margin-bottom: 20px;
+      }
+      
+      .sidebar h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+        font-weight: 500;
+      }
+      
+      .sidebar ul {
+        list-style: none;
+        padding: 0;
+      }
+      
+      .sidebar li {
+        margin-bottom: 5px;
+      }
+      
+      .sidebar a {
+        text-decoration: none;
+        color: #1a6db3;
+        font-weight: 400;
+      }
+      
+      .integration-container {
+        flex: 1;
+        margin-left: 30px;
+      }
+      
+      .integration-card {
+        display: flex;
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+      }
+      
+      .integration-card img {
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+        margin-right: 20px;
+      }
+      
+      .integration-card h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+        font-weight: 500;
+      }
+      
+      .integration-card p {
+        margin-bottom: 10px;
+        font-weight: 400;
+        color: #333;
+      }
+      
+      .integration-card button {
+        background-color: #1a6db3;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        font-weight: 500;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo">Magically</div>
+    </header>
+
+    <div class="main-content">
+      <aside class="sidebar">
+        <div class="section">
+          <h3>Integrations</h3>
+          <ul>
+            <li><a href="#" class="selected">All Integrations</a></li>
+            <li><a href="#">Featured</a></li>
+            <li><a href="#">Popular</a></li>
+            <li><a href="#">New</a></li>
+          </ul>
+        </div>
+        <div class="section">
+          <h3>Categories</h3>
+          <ul>
+            <li><a href="#" class="selected">All Categories</a></li>
+            <li><a href="#">Email & SMS</a></li>
+            <li><a href="#">Customer Service</a></li>
+            <li><a href="#">Analytics</a></li>
+            <li><a href="#">Automation</a></li>
+          </ul>
+        </div>
+      </aside>
+
+      <div class="integration-container" id="integration-options">
+        <!-- The integration options will be added here -->
+      </div>
+    </div>
+
+    <script>
+      // The click event handler for integration options
+      function selectIntegration(integrationId) {
+        Alloy.setToken('<%= data.token %>');
+        Alloy.install({
+          integrationId: integrationId,
+          callback: () => {
+            console.log("Alloy Embedded Modal installed successfully.");
+          }
+        });
+      }
+
+      // Fetch the integration data and render the options
+      (async function() {
+        Alloy.setToken('<%= data.token %>');
+        const integrations = await Alloy.getIntegrations();
+        const integrationOptions = document.getElementById('integration-options');
+
+        for (const integration of integrations.data) {
+          const option = document.createElement('div');
+          option.classList.add('integration-card');
+          option.innerHTML = `
+            <img src="${integration.icon}" alt="${integration.app}">
+            <div>
+              <h3>${integration.app}</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin commodo, nisi et bibendum venenatis, sapien sapien interdum erat, id bibendum nisl libero vitae justo.</p>
+              <button onclick="selectIntegration('${integration.integrationId}')">Connect</button>
+            </div>`;
+          integrationOptions.appendChild(option);
+        }
+      })();
+    </script>
+  </body>
+</html>
