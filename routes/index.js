@@ -6,7 +6,7 @@ const alloy = new Alloy("nFFNapI8Qh-9YfR_oGCN3");
 /* GET home page. */
 router.get('/', async function(req, res, next) {
   try {
-    await alloy.identify("6410be1878af36536d551632");
+    await alloy.identify({{alloy_user_id}});
 
     var tokenObj = await alloy.getUserToken();
 
