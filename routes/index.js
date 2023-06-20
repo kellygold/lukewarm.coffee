@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const Alloy = require("alloy-node");
-const alloy = new Alloy("nFFNapI8Qh-9YfR_oGCN3");
+const alloy = new Alloy("{{api_key}}");
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
