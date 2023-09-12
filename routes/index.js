@@ -1,12 +1,12 @@
 var express = require('express');
 var router = express.Router();
 const Alloy = require("alloy-node");
-const alloy = new Alloy("ANBLCFiUcKMwmzK93ZhLx");
+const alloy = new Alloy("onMjTlSffiMbVXXGy9xua");
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
   try {
-    await alloy.identify("64e770b8bc56219904b5699b");
+    await alloy.identify("64f106c69cabd228d5d7fb83");
     //6435d741662dcfe5c8ed29f7
 
     var tokenObj = await alloy.getUserToken();

@@ -5,7 +5,8 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var productsRouter = require('./routes/products');
+var ordersRouter = require('./routes/orders');
+var productsRouter = require('./routes/products'); 
 
 var app = express();
 // set the view engine to html
@@ -19,6 +20,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/products', productsRouter); // add products route file here
+app.use('/orders', ordersRouter); 
+app.use('/products', productsRouter);
 
 module.exports = app;

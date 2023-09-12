@@ -6,3 +6,9 @@ body {
 a {
   color: #00B7FF;
 }
+label {
+  display: inline-block;
+  width: 150px; /* Adjust according to your longest label */
+  text-align: right;
+  margin-right: 10px;
+}
