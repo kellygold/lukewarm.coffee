@@ -61,12 +61,15 @@
       <label>Price ($): </label><input id="price" type="number" step="0.01"/><br/><br/>
       <label>Product Type: </label><input id="productType" type="text"/><br/><br/>
       <label>Vendor: </label><input id="vendor" type="text"/><br/><br/>
+      <label>Quantity: </label><input id="inventoryQuantity" type="number" min="1" max="1000"/><br/><br/>
       <button id="saveProduct">Save</button>
       <button id="cancelProduct">Cancel</button>
+      <button id="autoFillProduct">Auto-fill</button>
     </div>
   </div>
   
   
   <script src="scripts/products.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/faker@5.5.3/dist/faker.min.js"></script>
 </body>
 </html>
