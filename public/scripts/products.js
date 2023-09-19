@@ -67,7 +67,6 @@ document.getElementById("saveProduct").addEventListener("click", async function(
     const vendor = document.getElementById("vendor").value;
     const inventoryQuantity = document.getElementById("inventoryQuantity").value;
     const sku = faker.random.alphaNumeric(10);
-    
 
     let base64Image;
     try {
@@ -79,27 +78,31 @@ document.getElementById("saveProduct").addEventListener("click", async function(
     }
 
     const productData = {
-        customFieldsMappings: {
-            images: [{
-                attachment: base64Image,
-            }],
-            variants: [{
-                price: price,
-                inventory_quantity: inventoryQuantity,
-                sku: sku,
-            }],
-        },
-        productName,
-        description,
-        productStatus,
-        price,
-        productType,
-        vendor
+        event: "product_created_lukewarm_coffee",
+        userId: "64f106c69cabd228d5d7fb83",
+        data: {
+            customFieldsMappings: {
+                images: [{
+                    attachment: base64Image,
+                }],
+                variants: [{
+                    price: price,
+                    inventory_quantity: inventoryQuantity,
+                    sku: sku,
+                }],
+            },
+            productName,
+            description,
+            productStatus,
+            price,
+            productType,
+            vendor
+        }
     };
 
     // Call API to save product
-    fetch('https://embedded.runalloy.com/2023-06/one/commerce/products?connectionId=64ee0778e82c129ab636f901', {
-        method: 'POST', // Assuming POST is used to create a new product, adjust if different
+    fetch('https://embedded.runalloy.com/2023-06/run/event', {  // updated endpoint
+        method: 'POST',
         headers: {
             'Authorization': 'Bearer SaOSPcvU3jdRx2M9sqZrC',
             'Accept': 'application/json',
