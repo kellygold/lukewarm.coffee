@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const API_ENDPOINT = 'https://embedded.runalloy.com/2023-06/one/commerce/orders?connectionId=64ee0778e82c129ab636f901&pageSize=50';
+    const API_ENDPOINT = 'https://embedded.runalloy.com/2023-06/one/commerce/orders?connectionId=6512f06d55242704b790d628&pageSize=50';
 
     fetch(API_ENDPOINT, {
         method: 'GET',
         headers: {
-            'Authorization': 'Bearer SaOSPcvU3jdRx2M9sqZrC',
+            'Authorization': 'Bearer laON7aWuiCDHyYQof42AT',
             'Accept': 'application/json'
         }
     })
@@ -80,13 +80,13 @@ function createSampleOrder() {
     fetch('https://embedded.runalloy.com/2023-06/run/event', {
         method: 'POST',
         headers: {
-            'Authorization': 'Bearer SaOSPcvU3jdRx2M9sqZrC',
+            'Authorization': 'Bearer laON7aWuiCDHyYQof42AT',
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            event: "create_order_demo",
-            userId: "64f7aa21008fe7fbe7432e1f",
+            event: "isv_app_order_created",
+            userId: "64e770b8bc56219904b5699b",
             data: orderData
         })
     })
