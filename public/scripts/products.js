@@ -1,3 +1,6 @@
+const apiKey = sessionStorage.getItem('apiKey');
+const userId = sessionStorage.getItem('userId');
+
 document.addEventListener("DOMContentLoaded", function() {
     const API_ENDPOINT = 'https://embedded.runalloy.com/2023-06/one/commerce/products?connectionId=6512f06d55242704b790d628&pageSize=10';
 
@@ -79,7 +82,7 @@ document.getElementById("saveProduct").addEventListener("click", async function(
 
     const productData = {
         event: "isv_app_product_created",
-        userId: "64f106c69cabd228d5d7fb83",
+        userId: userId,
         data: {
             customFieldsMappings: {
                 images: [{
@@ -104,7 +107,7 @@ document.getElementById("saveProduct").addEventListener("click", async function(
     fetch('https://embedded.runalloy.com/2023-06/run/event', {  // updated endpoint
         method: 'POST',
         headers: {
-            'Authorization': 'Bearer laON7aWuiCDHyYQof42AT',
+            'Authorization': `Bearer ${apiKey}`,
             'Accept': 'application/json',
             'Content-Type': 'application/json',
         },
@@ -118,6 +121,7 @@ document.getElementById("saveProduct").addEventListener("click", async function(
             location.reload();
         } else {
             console.error("Failed to create product");
+            console.log(apiKey)
         }
     })
     .catch(error => {

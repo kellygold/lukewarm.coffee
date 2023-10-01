@@ -1,3 +1,7 @@
+const apiKey = sessionStorage.getItem('apiKey');
+const userId = sessionStorage.getItem('userId');
+
+
 document.addEventListener("DOMContentLoaded", function() {
     const API_ENDPOINT = 'https://embedded.runalloy.com/2023-06/one/commerce/orders?connectionId=6512f06d55242704b790d628&pageSize=50';
 
@@ -80,13 +84,13 @@ function createSampleOrder() {
     fetch('https://embedded.runalloy.com/2023-06/run/event', {
         method: 'POST',
         headers: {
-            'Authorization': 'Bearer laON7aWuiCDHyYQof42AT',
+            'Authorization': `Bearer ${apiKey}`,
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
             event: "isv_app_order_created",
-            userId: "64e770b8bc56219904b5699b",
+            userId: userId,
             data: orderData
         })
     })
