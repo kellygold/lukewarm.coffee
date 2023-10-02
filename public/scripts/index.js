@@ -25,10 +25,12 @@ document.getElementById('goButton').addEventListener('click', async () => {
         let data = await response.json();
         let userId;
 
-        if (data.data && data.data.length > 0) {
-            userId = data.data[0].userId;
+        const existingUser = data.data.find(user => user.username === "demo-app-default@test.com");
+
+        if (existingUser) {
+            userId = existingUser.userId;
         } else {
-            // Create a new user if none exists
+            // Create a new user if the specific user does not exist
             response = await fetch('https://embedded.runalloy.com/2023-06/users/', {
                 method: 'POST',
                 headers: {
