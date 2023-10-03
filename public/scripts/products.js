@@ -118,7 +118,7 @@ document.getElementById("saveProduct").addEventListener("click", async function(
             // Hide modal
             document.getElementById("productModal").style.display = "none";
             // Reload products list or just prepend the new product to the top
-            location.reload();
+            console.log(response)
         } else {
             console.error("Failed to create product");
             console.log(apiKey)

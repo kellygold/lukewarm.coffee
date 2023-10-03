@@ -313,7 +313,7 @@ async function connectHeadlessly(integrationId, appName) {
                     });
                     const data = await response.json();
                     if (data.data && data.data.redirectUrl) {
-                        window.location.href = data.data.redirectUrl;
+                        window.open(data.data.redirectUrl, '_blank');
                     } else {
                         console.error("Failed to get redirect URL");
                     }
