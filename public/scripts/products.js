@@ -1,5 +1,8 @@
+const apiKey = sessionStorage.getItem('apiKey');
+const userId = sessionStorage.getItem('userId');
+
 document.addEventListener("DOMContentLoaded", function() {
-    const API_ENDPOINT = 'https://embedded.runalloy.com/2023-06/one/commerce/products?connectionId=6512f06d55242704b790d628&pageSize=10';
+    const API_ENDPOINT = 'https://embedded.runalloy.com/2023-06/one/commerce/products?connectionId=651da7e4d6e4affcf592988c&pageSize=10';
 
     fetch(API_ENDPOINT, {
         method: 'GET',
@@ -11,6 +14,19 @@ document.addEventListener("DOMContentLoaded", function() {
     .then(response => response.json())
     .then(data => displayProducts(data.products))
     .catch(error => console.error('Error fetching products:', error));
+});
+
+document.getElementById('magicallyLogo').addEventListener('click', function(event) {
+    event.preventDefault();  // Prevent the default link behavior
+
+    const storedApiKey = sessionStorage.getItem('apiKey');
+    const storedUserId = sessionStorage.getItem('userId');
+    
+    if (storedApiKey && storedUserId) {
+        window.location.href = `/success?userId=${storedUserId}&apiKey=${storedApiKey}`;
+    } else {
+        window.location.href = '/';  // or some other default location
+    }
 });
 
 function displayProducts(products) {
@@ -79,7 +95,7 @@ document.getElementById("saveProduct").addEventListener("click", async function(
 
     const productData = {
         event: "isv_app_product_created",
-        userId: "64f106c69cabd228d5d7fb83",
+        userId: userId,
         data: {
             customFieldsMappings: {
                 images: [{
@@ -104,7 +120,7 @@ document.getElementById("saveProduct").addEventListener("click", async function(
     fetch('https://embedded.runalloy.com/2023-06/run/event', {  // updated endpoint
         method: 'POST',
         headers: {
-            'Authorization': 'Bearer laON7aWuiCDHyYQof42AT',
+            'Authorization': `Bearer ${apiKey}`,
             'Accept': 'application/json',
             'Content-Type': 'application/json',
         },
@@ -115,9 +131,10 @@ document.getElementById("saveProduct").addEventListener("click", async function(
             // Hide modal
             document.getElementById("productModal").style.display = "none";
             // Reload products list or just prepend the new product to the top
-            location.reload();
+            console.log(response)
         } else {
             console.error("Failed to create product");
+            console.log(apiKey)
         }
     })
     .catch(error => {

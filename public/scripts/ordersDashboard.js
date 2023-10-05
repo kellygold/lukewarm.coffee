@@ -1,6 +1,11 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const API_ENDPOINT = 'https://embedded.runalloy.com/2023-06/one/commerce/orders?connectionId=6512f06d55242704b790d628&pageSize=50';
+const apiKey = sessionStorage.getItem('apiKey');
+const userId = sessionStorage.getItem('userId');
 
+
+document.addEventListener("DOMContentLoaded", function() {
+    const API_ENDPOINT = 'https://embedded.runalloy.com/2023-06/one/commerce/orders?connectionId=651da7e4d6e4affcf592988c&pageSize=50';
+//kelly@runalloy 65085d5884e8f6e3ec490b84
+// kelly+se@runalloy 6512f06d55242704b790d628
     fetch(API_ENDPOINT, {
         method: 'GET',
         headers: {
@@ -14,7 +19,18 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.getElementById("createSampleOrder").addEventListener('click', createSampleOrder);
 });
+document.getElementById('magicallyLogo').addEventListener('click', function(event) {
+    event.preventDefault();  // Prevent the default link behavior
 
+    const storedApiKey = sessionStorage.getItem('apiKey');
+    const storedUserId = sessionStorage.getItem('userId');
+    
+    if (storedApiKey && storedUserId) {
+        window.location.href = `/success?userId=${storedUserId}&apiKey=${storedApiKey}`;
+    } else {
+        window.location.href = '/';  // or some other default location
+    }
+});
 function createSampleOrder() {
     // Generate fake order data using Faker.js
 
@@ -80,13 +96,13 @@ function createSampleOrder() {
     fetch('https://embedded.runalloy.com/2023-06/run/event', {
         method: 'POST',
         headers: {
-            'Authorization': 'Bearer laON7aWuiCDHyYQof42AT',
+            'Authorization': `Bearer ${apiKey}`,
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
             event: "isv_app_order_created",
-            userId: "64e770b8bc56219904b5699b",
+            userId: userId,
             data: orderData
         })
     })
