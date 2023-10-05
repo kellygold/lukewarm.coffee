@@ -3,6 +3,8 @@ const userId = sessionStorage.getItem('userId');
 
 
 document.addEventListener("DOMContentLoaded", function() {
+
+    
     const API_ENDPOINT = 'https://embedded.runalloy.com/2023-06/one/commerce/orders?connectionId=651da7e4d6e4affcf592988c&pageSize=50';
 //kelly@runalloy 65085d5884e8f6e3ec490b84
 // kelly+se@runalloy 6512f06d55242704b790d628

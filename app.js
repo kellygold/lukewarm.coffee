@@ -7,6 +7,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var ordersRouter = require('./routes/orders');
 var productsRouter = require('./routes/products'); 
+var contactsRouter = require('./routes/contacts');
 
 var app = express();
 // set the view engine to html
@@ -22,5 +23,6 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/orders', ordersRouter); 
 app.use('/products', productsRouter);
+app.use('/contacts', contactsRouter);
 
 module.exports = app;

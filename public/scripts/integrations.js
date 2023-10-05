@@ -1,49 +1,19 @@
-/**
- * Integrations script for the application.
- * Handles integration functionality, fetches integration data, and renders options.
- * Allows users to select an integration and connect it headlessly.
- * @file Integrations script
- * @see {@link https://example.com}
- */
+const apiKey = sessionStorage.getItem('apiKey');
+const userId = sessionStorage.getItem('userId');
 
-// Modal-related functions
-function hideModal() {
-    document.getElementById('workflowsModal').style.display = 'none';
-}
 
-function showModal() {
-    document.getElementById('workflowsModal').style.display = 'block';
-}
-
+// Get the close button element
 const closeModal = document.querySelector('.close');
-closeModal.addEventListener('click', hideModal);
 
-// Integration-related functions
-async function fetchIntegrations() {
-    Alloy.setToken(window.magicallyToken);
-    return await Alloy.getIntegrations();
-}
+// Add a click event listener to the close button
+closeModal.addEventListener('click', () => {
+    document.getElementById('workflowsModal').style.display = 'none';
+});
 
-function renderIntegrationOptions(integrations) {
-    const integrationOptions = document.getElementById('integration-options');
-    for (const integration of integrations) {
-        const option = document.createElement('div');
-        option.classList.add('integration-card');
-        const buttonText = integration.workflows.length > 1 ? 'View Workflows' : 'Connect';
-        option.innerHTML = `
-            <img src="${integration.icon}" alt="${integration.app}">
-            <div>
-                <h3>${integration.app}</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin commodo, nisi et bibendum venenatis, sapien sapien interdum erat, id bibendum nisl libero vitae justo.</p>
-                <button onclick="selectIntegration('${integration.integrationId}', integrationsData.data)">${buttonText}</button>
-                <button onclick="connectHeadlessly('${integration.integrationId}', '${integration.app}')">Connect Headlessly</button>
-            </div>`;
-        integrationOptions.appendChild(option);
-    }
-}
+let integrationsData = [];
 
-async function selectIntegration(integrationId, integrations) {
-    const selectedIntegration = integrations.find(
+async function selectIntegration(integrationId) {
+    const selectedIntegration = integrationsData.data.find(
         (integration) => integration.integrationId === integrationId
     );
 
@@ -60,7 +30,60 @@ async function selectIntegration(integrationId, integrations) {
     }
 }
 
-// Headless connection
+function displayWorkflowsModal(integration) {
+    const workflowsContainer = document.getElementById('workflows-container');
+    workflowsContainer.innerHTML = '';
+
+    for (const workflow of integration.workflows) {
+        const label = document.createElement('label');
+        label.className = 'workflow-option';
+
+        const input = document.createElement('input');
+        input.type = 'checkbox';
+        input.name = 'workflow';
+        input.value = workflow.workflowId;
+        input.checked = workflow.installed;
+        label.appendChild(input);
+
+        // Display block icons
+        for (const block of workflow.blocks) {
+            const blockIcon = document.createElement('img');
+            blockIcon.className = 'block-icon';
+            blockIcon.src = block.icon;
+            label.appendChild(blockIcon);
+        }
+
+        const workflowNameWrapper = document.createElement('div');
+        workflowNameWrapper.className = 'workflow-name';
+
+        const text = document.createTextNode(workflow.name);
+        workflowNameWrapper.appendChild(text);
+        label.appendChild(workflowNameWrapper);
+
+        workflowsContainer.appendChild(label);
+    }
+
+    // Show the modal
+    document.getElementById('workflowsModal').style.display = 'block';
+}
+
+document.getElementById('connect-workflows').addEventListener('click', () => {
+    const selectedWorkflows = Array.from(
+        document.querySelectorAll('input[name="workflow"]:checked')
+    ).map((checkbox) => checkbox.value);
+
+    Alloy.setToken(window.magicallyToken);
+    Alloy.install({
+        workflowIds: selectedWorkflows,
+        callback: () => {
+            console.log('Selected workflows installed successfully.');
+        },
+        alwaysShowAuthentication: true,
+        hide: false,
+        title: 'Cool Alloy Workflows',
+    });
+});
+
 async function connectHeadlessly(integrationId, appName) {
     if (appName === "Shopify" || appName === "Salesforce CRM") {
         const subdomain = prompt("Please enter your shop subdomain:");
@@ -90,30 +113,24 @@ async function connectHeadlessly(integrationId, appName) {
     }
 }
 
-// Initialization
-async function initialize() {
-    try {
-        const urlParams = new URLSearchParams(window.location.search);
-        const apiKey = urlParams.get('apiKey');
-        const userId = urlParams.get('userId');
+// Fetch the integration data and render the options
+(async function () {
+    Alloy.setToken(window.magicallyToken);
+    integrationsData = await Alloy.getIntegrations();
+    const integrationOptions = document.getElementById('integration-options');
 
-        if (!apiKey || !userId) {
-            const storedApiKey = sessionStorage.getItem('apiKey');
-            const storedUserId = sessionStorage.getItem('userId');
-
-            if (storedApiKey && storedUserId) {
-                window.location.href = `/success?userId=${storedUserId}&apiKey=${storedApiKey}`;
-                return;
-            } else {
-                console.error("API key and User ID are missing.");
-                return;
-            }
-        }
-
-        const integrationsData = await fetchIntegrations();
-        renderIntegrationOptions(integrationsData.data);
-    } catch (error) {
-        console.error('Failed to fetch integrations:', error);
+    for (const integration of integrationsData.data) {
+        const option = document.createElement('div');
+        option.classList.add('integration-card');
+        const buttonText = integration.workflows.length > 1 ? 'View Workflows' : 'Connect';
+        option.innerHTML = `
+            <img src="${integration.icon}" alt="${integration.app}">
+            <div>
+                <h3>${integration.app}</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin commodo, nisi et bibendum venenatis, sapien sapien interdum erat, id bibendum nisl libero vitae justo.</p>
+                <button onclick="selectIntegration('${integration.integrationId}')">${buttonText}</button>
+                <button onclick="connectHeadlessly('${integration.integrationId}', '${integration.app}')">Connect Headlessly</button>
+            </div>`;
+        integrationOptions.appendChild(option);
     }
-}
-document.addEventListener("DOMContentLoaded", initialize);
+})();
