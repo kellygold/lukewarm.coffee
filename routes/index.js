@@ -14,7 +14,7 @@ router.get('/success', async function(req, res, next) {
     const apiKey = req.query.apiKey; // Get apiKey from query parameters
 
     if (!userId || !apiKey) {
-      return res.status(400).send("UserId and API key are required");
+      return res.status(400).json({error: "UserId and API key are required"});
     }
 
     // Initialize Alloy with the provided apiKey
@@ -33,6 +33,7 @@ router.get('/success', async function(req, res, next) {
     res.status(500).send("An error occurred");
   }
 });
+
 
 
 module.exports = router;

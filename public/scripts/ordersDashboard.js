@@ -19,7 +19,18 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.getElementById("createSampleOrder").addEventListener('click', createSampleOrder);
 });
+document.getElementById('magicallyLogo').addEventListener('click', function(event) {
+    event.preventDefault();  // Prevent the default link behavior
 
+    const storedApiKey = sessionStorage.getItem('apiKey');
+    const storedUserId = sessionStorage.getItem('userId');
+    
+    if (storedApiKey && storedUserId) {
+        window.location.href = `/success?userId=${storedUserId}&apiKey=${storedApiKey}`;
+    } else {
+        window.location.href = '/';  // or some other default location
+    }
+});
 function createSampleOrder() {
     // Generate fake order data using Faker.js
 

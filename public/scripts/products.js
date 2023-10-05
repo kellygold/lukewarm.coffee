@@ -16,6 +16,19 @@ document.addEventListener("DOMContentLoaded", function() {
     .catch(error => console.error('Error fetching products:', error));
 });
 
+document.getElementById('magicallyLogo').addEventListener('click', function(event) {
+    event.preventDefault();  // Prevent the default link behavior
+
+    const storedApiKey = sessionStorage.getItem('apiKey');
+    const storedUserId = sessionStorage.getItem('userId');
+    
+    if (storedApiKey && storedUserId) {
+        window.location.href = `/success?userId=${storedUserId}&apiKey=${storedApiKey}`;
+    } else {
+        window.location.href = '/';  // or some other default location
+    }
+});
+
 function displayProducts(products) {
     const productsBody = document.getElementById("productsBody");
 
