@@ -27,7 +27,7 @@ router.get('/success', async function(req, res, next) {
     // Access the token property of the tokenObj
     var token = tokenObj.token;
 
-    res.render('index4', {data: {token: token}});
+    res.render('integrations', {data: {token: token}});
   } catch (error) {
     console.error("Error in the route handler:", error);
     res.status(500).send("An error occurred");
