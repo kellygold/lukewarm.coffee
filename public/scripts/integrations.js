@@ -75,8 +75,9 @@ document.getElementById('connect-workflows').addEventListener('click', () => {
     Alloy.setToken(window.magicallyToken);
     Alloy.install({
         workflowIds: selectedWorkflows,
-        callback: () => {
+        callback: (data) => {
             console.log('Selected workflows installed successfully.');
+            console.log(JSON.stringify(data));
         },
         alwaysShowAuthentication: true,
         hide: false,
