@@ -2,7 +2,7 @@ const apiKey = sessionStorage.getItem('apiKey');
 const userId = sessionStorage.getItem('userId');
 
 document.addEventListener("DOMContentLoaded", function() {
-    const API_ENDPOINT = 'https://embedded.runalloy.com/2023-06/one/commerce/products?connectionId=651da7e4d6e4affcf592988c&pageSize=10';
+    const API_ENDPOINT = 'https://embedded.runalloy.com/2023-06/one/commerce/products?connectionId=651f5a9681c9ebc5f1cd21e1&pageSize=10';
 
     fetch(API_ENDPOINT, {
         method: 'GET',
