@@ -8,6 +8,7 @@ var usersRouter = require('./routes/users');
 var ordersRouter = require('./routes/orders');
 var productsRouter = require('./routes/products'); 
 var contactsRouter = require('./routes/contacts');
+var webhooksRouter = require('./routes/webhooks');
 
 var app = express();
 // set the view engine to html
@@ -24,5 +25,6 @@ app.use('/users', usersRouter);
 app.use('/orders', ordersRouter); 
 app.use('/products', productsRouter);
 app.use('/contacts', contactsRouter);
+app.use('/webhooks', webhooksRouter)
 
 module.exports = app;
