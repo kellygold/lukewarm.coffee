@@ -130,7 +130,7 @@ async function connectHeadlessly(integrationId, appName) {
                 <h3>${integration.app}</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin commodo, nisi et bibendum venenatis, sapien sapien interdum erat, id bibendum nisl libero vitae justo.</p>
                 <button onclick="selectIntegration('${integration.integrationId}')">${buttonText}</button>
-                <button onclick="connectHeadlessly('${integration.integrationId}', '${integration.app}')">Connect Headlessly</button>
+               <!-- <button onclick="connectHeadlessly('${integration.integrationId}', '${integration.app}')">Connect Headlessly</button> -->
             </div>`;
         integrationOptions.appendChild(option);
     }
