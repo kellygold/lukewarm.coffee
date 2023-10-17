@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Webhooks</title>
+</head>
+<body>
+    <div>
+        <button onclick="fetchWebhooks()">Refresh Webhooks</button>
+        <div id="webhookDrawer">
+            <% webhooks.forEach(webhook => { %>
+                <div onclick="showWebhook('<%= JSON.stringify(webhook) %>')">
+                    <%= webhook.someTopLevelInfo %>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+
+    <script>
+        function showWebhook(webhook) {
+            alert(webhook);
+        }
+
+        async function fetchWebhooks() {
+            const response = await fetch('/webhooks');
+            const data = await response.json();
+            const drawer = document.getElementById('webhookDrawer');
+            
+            // Clear previous data
+            drawer.innerHTML = '';
+
+            // Display the webhooks
+            data.forEach(webhook => {
+                const webhookDiv = document.createElement('div');
+                webhookDiv.textContent = webhook.someTopLevelInfo;
+                webhookDiv.onclick = () => {
+                    alert(JSON.stringify(webhook, null, 2));
+                };
+                drawer.appendChild(webhookDiv);
+            });
+        }
+    </script>
+</body>
+</html>

@@ -43,3 +43,62 @@ input, select, textarea {
     margin: 5px 0;
     flex: 1; /* Allows input fields to take up remaining space */
 }
+
+.webhook-drawer {
+    width: 30%; /* Adjust as needed */
+    background-color: white;
+    padding: 20px;
+    display: none;
+    border-radius: 5px;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    margin-left: 20px;
+    overflow-y: auto; /* To scroll if content overflows */
+    max-height: calc(100vh - 100px); /* Adjust based on your header's height */
+}
+
+.webhook-events {
+    margin-top: 20px;
+}
+
+.webhook-banner {
+    position: fixed;
+    right: 0;
+    top: 80%;
+    transform: translateY(-50%);
+    background-color: #1a6db3;
+    color: white;
+    padding: 10px 5px;
+    cursor: pointer;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    border-top-left-radius: 5px;
+    font-size: 14px;
+    border-bottom-left-radius: 5px;
+}
+#refreshWebhooks {
+    background-color: #1a6db3;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.webhook-event {
+    border: 1px solid #e0e0e0;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.webhook-summary {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.webhook-details {
+    display: none;
+    margin-top: 10px;
+    white-space: pre-wrap; /* Keeps the formatted JSON structure */
+}

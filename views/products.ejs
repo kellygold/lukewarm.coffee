@@ -45,6 +45,16 @@
             </tbody>
         </table>
     </div>
+    <div class="webhook-drawer">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h3>Webhook Events</h3>
+        <button id="refreshWebhooks">Refresh</button>
+      </div>
+      <div class="webhook-events">
+          <!-- Webhook events will be populated here via JS -->
+      </div>
+  </div>
+  <div class="webhook-banner" onclick="toggleDrawer()">Webhooks</div>
   </div>
   <div id="productModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5);">
     <div style="width: 400px; margin:100px auto; background-color:white; padding:20px; border-radius:10px;">
