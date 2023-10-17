@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     const apiKey = sessionStorage.getItem('apiKey');
     const userId = sessionStorage.getItem('userId');
+
     const API_ENDPOINT = 'https://embedded.runalloy.com/2023-06/one/commerce/products?connectionId=652d6460c672f2c2021cc9da&pageSize=10';
 
     // Fetch products

@@ -86,3 +86,9 @@
     text-decoration: none;
     cursor: pointer;
 }
+.workflow-subtext {
+    font-style: italic;
+    font-size: 12px; /* Adjust as needed */
+    opacity: 0.6; /* Adjust for desired transparency */
+    margin-top: 5px; /* Add some spacing from the title */
+}
