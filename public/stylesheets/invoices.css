@@ -1,0 +1,44 @@
+/* Invoices Table Styles */
+.table-container {
+    margin: 20px 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+/* Checkbox Styles */
+input[type="checkbox"] {
+    cursor: pointer;
+}
+
+/* Sync Button Styles */
+#syncInvoices {
+    background-color: grey;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: not-allowed;
+}
+
+#syncInvoices.active {
+    background-color: #1a6db3;
+    cursor: pointer;
+}
+
+#syncInvoices:disabled {
+    background-color: grey;
+    cursor: not-allowed;
+}
