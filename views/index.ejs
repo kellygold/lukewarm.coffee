@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enter Your Alloy API Key</title>
-    <link rel="stylesheet" href="/stylesheets/style.css"> <!-- Link to the style.css stylesheet -->
-</head>
+    <%- include('partials/head', { title: 'Enter your API key', javascriptFiles: ['https://cdn.runalloy.com/scripts/embedded.js'] }) %>
 <body>
     <div class="centered">
         <input type="text" id="apiKey" placeholder="Enter Your Alloy API Key">
