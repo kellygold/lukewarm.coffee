@@ -3,8 +3,8 @@
     <%- include('partials/head', { title: 'Orders Dashboard', javascriptFiles: ['https://cdn.runalloy.com/scripts/embedded.js'] }) %>
 
 <body>
+  <div class="grid">
     <%- include('partials/header.ejs') %>
-  <div class="main-content">
     <aside class="sidebar">
         <div class="section">
             <h3>Orders Dashboard</h3>
@@ -17,7 +17,7 @@
         </div>
     </aside>
 
-    <div class="integration-container">
+    <div class="list">
         <div style="display: flex; justify-content: space-between; align-items: center;">
             <h1>Orders Dashboard</h1>
             <button id="createSampleOrder">Create Sample Order</button>
