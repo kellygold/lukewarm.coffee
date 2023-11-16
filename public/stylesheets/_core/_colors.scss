@@ -1,0 +1,59 @@
+// Base colors
+
+$black: #000000;
+$white: #FFFFFF;
+
+//True Gray
+
+$true-gray-50: #fafafa;
+$true-gray-100: #f5f5f5;
+$true-gray-200: #e5e5e5;
+$true-gray-300: #d4d4d4;
+$true-gray-400: #a3a3a3;
+$true-gray-500: #737373;
+$true-gray-600: #525252;
+$true-gray-700: #404040;
+$true-gray-800: #262626;
+$true-gray-900: #171717;
+
+//Cool Gray
+
+$cool-gray-50: #f9fafb;
+$cool-gray-100: #f3f4f6;
+$cool-gray-200: #e5e7eb;
+$cool-gray-300: #d1d5db;
+$cool-gray-400: #9ca3af;
+$cool-gray-500: #6b7280;
+$cool-gray-600: #4b5563;
+$cool-gray-700: #374151;
+$cool-gray-800: #1f2937;
+$cool-gray-900: #111827;
+
+//Accent
+
+$accent-50: #eef2ff;
+$accent-100: #e0e7ff;
+$accent-200: #c7d2fe;
+$accent-300: #a5b4fc;
+$accent-400: #818cf8;
+$accent-500: #6366f1;
+$accent-600: #4f46e5;
+$accent-700: #4338ca;
+$accent-800: #3730a3;
+$accent-900: #312e81;
+
+// Semantic colors
+
+$primary-color: $accent-500;
+$secondary-color: $cool-gray-600;
+
+$text: $true-gray-900;
+$text-light: $true-gray-600;
+$text-invert: $white;
+
+$background-white: $white;
+$background-light: $cool-gray-50;
+
+$border: $cool-gray-300;
+
+

@@ -1,9 +1,7 @@
-// src/styles/main.scss
+@import '_core/colors';
+@import '_core/globals';
+@import '_core/inputs';
 
-$primary-color: #d7d7d7;
+//Pages
 
-body {
-  background-color: $primary-color;
-}
-
-a { color: blue; }
+@import '_pages/login';

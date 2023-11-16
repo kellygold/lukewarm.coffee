@@ -1,0 +1,25 @@
+.login {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    div {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        padding: 42px;
+        width: 300px;
+        height: auto;
+        background-color: $background-white;
+        border: 1px solid $border;
+        gap: 24px;
+        border-radius: 16px;
+    }
+}
+
+.errormessage {
+    color: $primary-color;
+}

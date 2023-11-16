@@ -2,10 +2,13 @@
 <html lang="en">
     <%- include('partials/head', { title: 'Enter your API key', javascriptFiles: ['https://cdn.runalloy.com/scripts/embedded.js'] }) %>
 <body>
-    <div class="centered">
-        <input type="text" id="apiKey" placeholder="Enter Your Alloy API Key">
-        <button id="goButton">Go</button>
-        <p id="errorMessage" style="color: red;"></p>
+    <div class="login">
+        <div>
+            <h3>Enter your API Key</h3>
+            <input type="text" id="apiKey" placeholder="Enter Your Alloy API Key">
+            <button class="button" id="goButton">Go</button>
+            <p class="errormessage" id="errorMessage"></p>
+        </div>
     </div>
 
     <script src="/scripts/index.js"></script>
