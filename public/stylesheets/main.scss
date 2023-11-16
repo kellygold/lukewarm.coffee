@@ -1,7 +1,11 @@
 @import '_core/colors';
+@import '_core/scale';
 @import '_core/globals';
 @import '_core/inputs';
+@import '_core/grid';
 
 //Pages
 
 @import '_pages/login';
+@import '_pages/header';
+@import '_pages/integrations';

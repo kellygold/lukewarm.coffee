@@ -10,12 +10,12 @@
         position: relative;
         display: flex;
         flex-direction: column;
-        padding: 42px;
+        padding: $big;
         width: 300px;
         height: auto;
         background-color: $background-white;
         border: 1px solid $border;
-        gap: 24px;
+        gap: $medium;
         border-radius: 16px;
     }
 }

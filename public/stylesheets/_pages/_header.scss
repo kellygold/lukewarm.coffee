@@ -1,0 +1,43 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 100%;
+    align-items: center;
+    background-color: $background-light;
+    padding: $tiny;
+    border-right: 1px solid $border;
+    gap: 50px;
+
+    .tooltip {
+        display: none;
+        position: absolute;
+        padding: $tiny $base;
+        top: 10px;
+        left: 50px;
+        background-color: black;
+        color: white;
+    }
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        li {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            background-color: $cool-gray-300;
+            &:hover {
+                .tooltip { display: block; }
+            }
+        }
+        a {
+            position: relative;
+            display: block;
+            width: 50px;
+            height: 50px;
+            background-color: $cool-gray-300;
+        }
+    }
+}

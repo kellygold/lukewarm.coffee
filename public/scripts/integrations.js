@@ -125,12 +125,16 @@ async function connectHeadlessly(integrationId, appName) {
         option.classList.add('integration-card');
         const buttonText = integration.workflows.length > 1 ? 'View Workflows' : 'Connect';
         option.innerHTML = `
-            <img src="${integration.icon}" alt="${integration.app}">
             <div>
-                <h3>${integration.app}</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin commodo, nisi et bibendum venenatis, sapien sapien interdum erat, id bibendum nisl libero vitae justo.</p>
-                <button onclick="selectIntegration('${integration.integrationId}')">${buttonText}</button>
-               <!-- <button onclick="connectHeadlessly('${integration.integrationId}', '${integration.app}')">Connect Headlessly</button> -->
+                <div class="img-wrapper">
+                    <img src="${integration.icon}" alt="${integration.app}">
+                </div>
+                <div>
+                    <h3>${integration.app}</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin commodo, nisi et bibendum venenatis, sapien sapien interdum erat, id bibendum nisl libero vitae justo.</p>
+                    <button onclick="selectIntegration('${integration.integrationId}')">${buttonText}</button>
+                <!-- <button class="button" onclick="connectHeadlessly('${integration.integrationId}', '${integration.app}')">Connect Headlessly</button> -->
+                </div>
             </div>`;
         integrationOptions.appendChild(option);
     }
