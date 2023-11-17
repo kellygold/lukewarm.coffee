@@ -4,19 +4,25 @@
     position: relative;
     height: 100%;
     align-items: center;
-    background-color: $background-light;
-    padding: $tiny;
+    background-color: $background-white;
+    padding: $base;
     border-right: 1px solid $border;
     gap: 50px;
+
+    .logo {
+        a { font-size: 0;}
+    }
 
     .tooltip {
         display: none;
         position: absolute;
         padding: $tiny $base;
         top: 10px;
-        left: 50px;
+        left: 40px;
         background-color: black;
         color: white;
+        transition: 0.2s;
+        border-radius: $radius;
     }
 
     ul {
@@ -27,18 +33,25 @@
             position: relative;
             width: 50px;
             height: 50px;
-            background-color: $cool-gray-300;
+            border-radius: $radius;
             &:hover {
-                .tooltip { display: block; }
+                .tooltip { 
+                    display: block;
+                    left: 50px;
+                }
+                a { background-color: $cool-gray-100; }
             }
         }
         a {
             position: relative;
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: $radius;
             width: 50px;
             height: 50px;
-            background-color: $cool-gray-300;
             font-size: 0;
+            
         }
     }
 }

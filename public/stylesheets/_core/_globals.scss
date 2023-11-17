@@ -75,3 +75,40 @@ a {
   text-decoration: none;
   &:hover { color: $secondary-color ;}
 }
+
+h4 {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: $text-light;
+  letter-spacing: 1px;
+  font-weight: 400;
+  margin-bottom: $base;
+}
+
+table {
+  font-size: 12px;
+  th { text-align: left; }
+  tr, td, th {
+    padding: $small;
+  };
+  tr { border-bottom: 1px solid $border; }
+}
+
+button {
+  background: $primary-color;
+  color: $text-invert;
+  padding: 8px 16px;
+  font-size: 16px;
+  border-radius: 16px;
+  border: 1px solid $border;
+  &:hover {
+    background: $accent-600;
+    cursor: pointer;
+  }
+}
+
+p {
+  font-size: 14px;
+  color: $text-light;
+  margin-bottom: $base;
+}
