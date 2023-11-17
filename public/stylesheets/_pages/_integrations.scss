@@ -32,6 +32,11 @@
 
         }
     }
+    .card-head {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
     .img-wrapper {
         display: flex;
         width: 80px;
@@ -46,10 +51,15 @@
         display: block;
         width: 50px;
         width: 50px;
+        transition: all .2s ease;
     }
     .integration-copy {
         display: flex;
         flex-direction: column;
         gap: 10px;
     }
+}
+
+.integration-card:hover {
+    img { transform: scale(1.05); }
 }

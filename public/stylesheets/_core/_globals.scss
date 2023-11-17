@@ -30,6 +30,7 @@ dd {
 
 body {
   line-height: 1;
+  overflow: hidden;
 }
 
 ol,
@@ -71,9 +72,9 @@ html, body {
 }
 
 a { 
-  color: $primary-color;
+  color: $secondary-color;
   text-decoration: none;
-  &:hover { color: $secondary-color ;}
+  &:hover { color: $primary-color ;}
 }
 
 h4 {
@@ -86,20 +87,30 @@ h4 {
 }
 
 table {
+  width: 100%;
   font-size: 12px;
+  font-weight: 400;
+  thead {
+    border-bottom: 2px solid $secondary-color;
+    font-size: 14px;;
+  }
   th { text-align: left; }
   tr, td, th {
-    padding: $small;
+    padding: $base 0;
   };
-  tr { border-bottom: 1px solid $border; }
+  tr { 
+    border-bottom: 1px solid $border;
+    &:hover { background-color: $background-light; }
+  }
 }
 
 button {
   background: $primary-color;
+  height: fit-content;
   color: $text-invert;
   padding: 8px 16px;
   font-size: 16px;
-  border-radius: 16px;
+  border-radius: 50px;
   border: 1px solid $border;
   &:hover {
     background: $accent-600;

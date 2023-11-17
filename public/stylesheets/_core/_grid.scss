@@ -8,6 +8,10 @@
         background: $background-light;
         padding: $big;
         border-right: 1px solid $border;
+        ul {
+            margin-bottom: $big;
+        }
+        li {margin-bottom: $small;}
     }
     .list {
         display: flex;

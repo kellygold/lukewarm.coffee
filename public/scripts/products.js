@@ -30,6 +30,18 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
+    document.getElementById('integrationsPage').addEventListener('click', function(event) {
+        event.preventDefault();
+        const storedApiKey = sessionStorage.getItem('apiKey');
+        const storedUserId = sessionStorage.getItem('userId');
+        
+        if (storedApiKey && storedUserId) {
+            window.location.href = `/success?userId=${storedUserId}&apiKey=${storedApiKey}`;
+        } else {
+            window.location.href = '/';
+        }
+    });
+
     document.getElementById("createProduct").addEventListener("click", function() {
         document.getElementById("productModal").style.display = "block";
     });
