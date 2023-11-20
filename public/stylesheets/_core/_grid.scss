@@ -19,4 +19,12 @@
         gap: $huge;
         padding: $huge;
     }
+    .list-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: $big;
+        padding-bottom: $big;
+        border-bottom: 1px solid $cool-gray-200;
+    }
 }
