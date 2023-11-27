@@ -7,21 +7,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="stylesheets/ordersDashboard.css">
     <link rel="stylesheet" type="text/css" href="stylesheets/common.css">
+    <!-- Include products.css if it contains shared styles -->
+    <!-- <link rel="stylesheet" type="text/css" href="stylesheets/products.css"> -->
 </head>
 <body>
     <%- include('partials/header.ejs') %>
-  <div class="main-content">
-    <aside class="sidebar">
-        <div class="section">
-            <h3>Orders Dashboard</h3>
-            <ul>
-                <li><a href="#" class="selected">All Orders</a></li>
-                <li><a href="#">Pending Orders</a></li>
-                <li><a href="#">Completed Orders</a></li>
-                <li><a href="#">Returned Orders</a></li>
-            </ul>
-        </div>
-    </aside>
+    <div class="main-content">
+        <aside class="sidebar">
+            <div class="section">
+                <h3>Orders Dashboard</h3>
+                <ul>
+                    <li><a href="#" class="selected">All Orders</a></li>
+                    <li><a href="#">Pending Orders</a></li>
+                    <li><a href="#">Completed Orders</a></li>
+                    <li><a href="#">Returned Orders</a></li>
+                </ul>
+            </div>
+        </aside>
 
     <div class="integration-container">
         <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -46,17 +48,8 @@
           </tbody>
       </table>
     </div>
-    <div class="webhook-drawer">
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-          <h3>Webhook Events</h3>
-          <button id="refreshWebhooks">Refresh</button>
-        </div>
-        <div class="webhook-events">
-            <!-- Webhook events will be populated here via JS -->
-        </div>
-    </div>
-    <div class="webhook-banner" onclick="toggleDrawer()">Webhooks</div>
   </div>
+
   <script src="https://cdn.jsdelivr.net/npm/faker@5.5.3/dist/faker.min.js"></script>
   <script src="scripts/ordersDashboard.js""></script>
 </body>

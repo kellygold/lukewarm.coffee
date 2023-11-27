@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
     .catch(error => console.error('Error fetching orders:', error));
     document.getElementById('refreshWebhooks').addEventListener('click', fetchWebhookEvents);
     document.getElementById("createSampleOrder").addEventListener('click', createSampleOrder);
+    document.getElementById('refreshWebhooks').addEventListener('click', fetchWebhookEvents);
 });
 function toggleDrawer() {
     const drawer = document.querySelector('.webhook-drawer');
@@ -83,6 +84,56 @@ document.getElementById('magicallyLogo').addEventListener('click', function(even
         window.location.href = '/';  // or some other default location
     }
 });
+
+function toggleDrawer() {
+    const drawer = document.querySelector('.webhook-drawer');
+    if (drawer.style.display === "none" || !drawer.style.display) {
+        drawer.style.display = "block";
+    } else {
+        drawer.style.display = "none";
+    }
+}
+
+function fetchWebhookEvents() {
+    fetch('/webhooks', {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => displayWebhooks(data.webhooks))
+    .catch(error => console.error('Error fetching webhooks:', error));
+}
+function displayWebhooks(webhooks) {
+    const webhookEventsDiv = document.querySelector('.webhook-events');
+    webhookEventsDiv.innerHTML = ''; // Clear the existing webhooks
+
+    webhooks.forEach(webhook => {
+        const webhookDiv = document.createElement("div");
+        webhookDiv.className = "webhook-event";
+
+        const summaryDiv = document.createElement("div");
+        summaryDiv.className = "webhook-summary";
+        summaryDiv.textContent = `Event: ${webhook.headers['x-alloy-workflow']}`;
+        summaryDiv.addEventListener('click', function() {
+            const detailsDiv = this.nextElementSibling;
+            if (detailsDiv.style.display === "none" || !detailsDiv.style.display) {
+                detailsDiv.style.display = "block";
+            } else {
+                detailsDiv.style.display = "none";
+            }
+        });
+
+        const detailsDiv = document.createElement("div");
+        detailsDiv.className = "webhook-details";
+        detailsDiv.textContent = JSON.stringify(webhook.data, null, 2); // Pretty print the JSON
+
+        webhookDiv.appendChild(summaryDiv);
+        webhookDiv.appendChild(detailsDiv);
+        webhookEventsDiv.appendChild(webhookDiv);
+    });
+}
 function createSampleOrder() {
     // Generate fake order data using Faker.js
 
