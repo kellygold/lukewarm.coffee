@@ -46,8 +46,17 @@
           </tbody>
       </table>
     </div>
+    <div class="webhook-drawer">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <h3>Webhook Events</h3>
+          <button id="refreshWebhooks">Refresh</button>
+        </div>
+        <div class="webhook-events">
+            <!-- Webhook events will be populated here via JS -->
+        </div>
+    </div>
+    <div class="webhook-banner" onclick="toggleDrawer()">Webhooks</div>
   </div>
-
   <script src="https://cdn.jsdelivr.net/npm/faker@5.5.3/dist/faker.min.js"></script>
   <script src="scripts/ordersDashboard.js""></script>
 </body>
